@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Minimal</title>
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -107,20 +111,37 @@
   <p id="result"></p>
 
   <script>
-    // les questions 
     const quizData = [
       { question: "Cation monoatomique",
-       options: ["OH<sup>-</sup>", "H<sub>3</sub>O<sup>+</sup>", "Na<sup>+</sup>", "Cl<sup>-</sup>"],
-        answer: "Na<sup>+</sup>" },
-      { question: "le nombre des électrons dans l'atome de carbone Z = 6",
+       options: ["OH⁻", "H₃O⁺", "Na⁺", "Cl⁻"],
+       answer: "Na⁺" },
+      { question: "Le nombre d'électrons dans l'atome de carbone Z = 6",
        options: ["6", "3", "2", "0"], 
        answer: "6" },
-      { question: "la charge d'un atome",
+      { question: "La charge d'un atome",
        options: ["Z.e", "0", "Z", "-Z.e"],
-        answer: "0" },
-      { question: "la charge de l'ion O<sup>2-</sup>", 
-      options: ["0", "2", "-2e", "e"],
+       answer: "0" },
+      { question: "La charge de l'ion O²⁻", 
+       options: ["0", "2", "-2e", "e"],
        answer: "-2e" },
+      { question: "Un anion est une particule qui :",
+       options: ["perd des électrons", "gagne des électrons", "perd des protons", "gagne des protons"],
+       answer: "gagne des électrons" },
+      { question: "Le nombre d’électrons dans un ion Mg²⁺ de Z=12 est :",
+       options: ["10", "12", "14", "24"],
+       answer: "10" },
+      { question: "L’élément chimique dont le symbole est Fe est :",
+       options: ["Fer", "Fluor", "Phosphore", "Francium"],
+       answer: "Fer" },
+      { question: "Un atome est constitué de :", 
+       options: ["molécules et ions", "un noyau et des électrons", "cations et anions", "électrons seulement"], 
+       answer: "un noyau et des électrons" },
+      { question: "L’atome est électriquement :", 
+       options: ["positif", "négatif", "neutre", "chargé"], 
+       answer: "neutre" },
+      { question: "Les électrons portent une charge :", 
+       options: ["positive", "négative", "neutre", "double"], 
+       answer: "négative" }
     ];
 
     const quizDiv = document.getElementById('quiz');
