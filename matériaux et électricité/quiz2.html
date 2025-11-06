@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Minimal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #90caf9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #1e88e5;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #quiz {
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .question {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      display: block;
+      background-color: #f1f1f1;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    label:hover {
+      background-color: #e0e0e0;
+    }
+
+    .correct {
+      background-color: #a5d6a7 !important;
+      color: #2e7d32;
+    }
+
+    .wrong {
+      background-color: #ef9a9a !important;
+      color: #c62828;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #42a5f5, #1e88e5);
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    @media (max-width: 400px) {
+      button {
+        width: 100%;
+      }
+      #quiz {
+        padding: 15px;
+      }
+      label {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Minimal</h1>
+  <div id="quiz"></div>
+  <button onclick="submitQuiz()">Valider</button>
+  <p id="result"></p>
+
+  <script>
+    const quizData = [
+      { question: "Flotte dans l'eau douce", options: ["PS", "PVC", "PE", "PET"], answer: "PE" },
+      { question: "Attiré par l'aimant", options: ["Fer", "Zinc", "Aluminium", "Cuivre"], answer: "Fer" },
+      { question: "Sa couleur est rouge-brique", options: ["Fer", "Zinc", "Aluminium", "Cuivre"], answer: "Cuivre" },
+      { question: "Un ...........peut être fabriqué à partir de différents matériaux.", options: ["Atome", "Plastique", "Objet", "Verre"], answer: "Atome" },
+    ];
+
+    const quizDiv = document.getElementById('quiz');
+
+    quizData.forEach((q, index) => {
+      const questionEl = document.createElement('div');
+      questionEl.classList.add('question');
+      questionEl.innerHTML = `<p>${q.question}</p>`;
+      q.options.forEach(option => {
+        const label = document.createElement('label');
+        label.innerHTML = `<input type="radio" name="q${index}" value="${option}"> ${option}`;
+        questionEl.appendChild(label);
+      });
+      quizDiv.appendChild(questionEl);
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      quizData.forEach((q, index) => {
+        const radios = document.querySelectorAll(`input[name="q${index}"]`);
+        radios.forEach(radio => {
+          const label = radio.parentElement;
+          label.classList.remove('correct', 'wrong');
+          if (radio.checked) {
+            if (radio.value === q.answer) {
+              label.classList.add('correct');
+              score++;
+            } else {
+              label.classList.add('wrong');
+            }
+          }
+        });
+      });
+      document.getElementById('result').innerText = `Votre score : ${score} / ${quizData.length}`;
+    }
+  </script>
+</body>
+</html>
