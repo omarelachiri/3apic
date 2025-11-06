@@ -108,11 +108,20 @@
   <p id="result"></p>
 
   <script>
+    // les questions 
     const quizData = [
-      { question: "Flotte dans l'eau douce", options: ["PS", "PVC", "PE", "PET"], answer: "PE" },
-      { question: "Attiré par l'aimant", options: ["Fer", "Zinc", "Aluminium", "Cuivre"], answer: "Fer" },
-      { question: "Sa couleur est rouge-brique", options: ["Fer", "Zinc", "Aluminium", "Cuivre"], answer: "Cuivre" },
-      { question: "Un ...........peut être fabriqué à partir de différents matériaux.", options: ["Atome", "Plastique", "Objet", "Verre"], answer: "Atome" },
+      { question: "Cation monoatomique",
+       options: ["OH-", "H3O+", "Na+", "Cl-"],
+        answer: "Na+" },
+      { question: "le nombre des électrons dans l'atome de carbone Z = 6",
+       options: ["6", "3", "2", "0"], 
+       answer: "6" },
+      { question: "la charge d'un atome",
+       options: ["Z.e", "0", "Z", "Z.(-e)"],
+        answer: "0" },
+      { question: "la charge de l'ion O2-", 
+      options: ["0", "2", "-2e", "e"],
+       answer: "-2e" },
     ];
 
     const quizDiv = document.getElementById('quiz');
